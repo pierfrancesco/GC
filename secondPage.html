@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <style>
+  * { margin: 0; padding: 0; }
+  body { padding: 4px; background: #eee; font-family: Arial; font-size: 1px; line-height: 1px; }
+  a { text-decoration: none; }
+  a img{border: none;}
+  h1 a { color: #000;}
+  #stage {
+    width:400px; 
+    text-align: center;
+    margin: 50px auto;
+    position: relative;
+  }
+  #stage img{
+    position: absolute;
+  }
+  #next, #previous { width: 29px; height: 43px; }
+  #previous { background: url(images/prev-button.png) top left no-repeat;}
+  #next { background: url(images/next-button.png) top left no-repeat;}
+</style>
+<script type="text/javascript" src="javascripts/jquery.js"></script> 
+<script type="text/javascript" src="javascripts/stacking.js"></script> 
+<script type="text/javascript" >
+
+$(function(){
+$('#stage').stack({ width:500,height:300 });
+});
+
+</script>
+<head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="finalProject : Eye 3d modeling" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>finalProject</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/pierfrancesco/GC">View on GitHub</a>
+          <h1 id="project_title">finalProject</h1>
+          <h2 id="project_tagline">what:Eye 3d modeling</h2>
+          <h3 id="project_tagline">made by:  Pierfrancesco D'Orsogna - mat: 455353</h3>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/pierfrancesco/GC/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/pierfrancesco/GC/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+<p><a href="index.html"><-BACK</a></p>
+<h5>Below are some screenshots of the eye's elements modeled in plasm.js:</h5>
+<table><tr><td>
+        <div id="stage"> 
+        <div id="previous"></div>
+            <img class="default" width="400" height="400" src="images/nervOttico.png"/>
+            <img class="default" width="400" height="400" src="images/frontSide.png"/>
+            <img class="default" width="400" height="400" src="images/stratiOcchio.png"/>
+            <img class="default" width="400" height="400" src="images/corpoVitreo.png"/>
+            <img class="default" width="400" height="400" src="images/cristallinoIrideCornea.png"/>
+            <div id="next"></div>
+        </div>
+  <br><br><br><br>
+</td></tr></table>
+
+<p>But enough talk, let the pictures speak for themselves.
+  Here there's the js code for draw the eye in the plasm platform:<br>
+  File:<a href="javascripts/OcchioMigliore.js"> OcchioMigliore.js</a><br>
+  Platform:<a href="http://cvdlab.github.com/plasm.js/" target="_blank"> Plasm</a></p>
+  <h6>ATTENTION: there's a little function at the end of the code that permitted an animation; exactly, after few second the full eye will decompose! <br>
+    P.S. If you see the eye already "open", please lauch again the code :) 
+    Enjoy it!</h6>
+
+  </body>
+</html>
