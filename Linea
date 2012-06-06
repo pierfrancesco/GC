@@ -1,0 +1,74 @@
+function point (x,y){
+
+	this.x=x;
+	this.y=y;
+};
+
+var Line = function(a,b,c){
+
+	if(!(this instanceof Line)){// l'utente se invoca la funzione senza il new ottiene lo stesso risultato in caso l'avesse invocato con il new
+		return new Line(a,b,c);
+	}
+
+	 this.a = a;
+	 this.b = b;
+	 this.c = c;
+};
+
+var linea = new Line(1,2,3)
+var punto = new point (2,3)
+
+point.prototype.getDistanceFromLine= function(linea){
+
+	var x = linea.a;
+	var y = linea.b;
+	var z = linea.c;
+	var px = this.x;
+	var py = this.y;
+
+	return Math.abs(x*px+y*py+z)/(Math.sqrt(Math.pow(x,2)+Math.pow(y,2)))
+
+}
+
+point.prototype.getDistance = function(x) {
+	if(x instanceof point){
+		return this.getDistanceFromPoint(x);
+	}
+
+	if(x instanceof Line){
+		return this.getDistanceFromLine(x);
+	}
+
+	throw new Error('x non è niente')
+};
+
+point.prototype.getDistance = function (a) {
+	var disx
+	var disy
+	if(this.x < a.x && this.y < a.y){
+		disx=a.x-this.x;
+		disy=a.y-this.y;
+		 return Math.sqrt((disx*disx)+(disy*disy));
+
+	} else if (this.x > a.x && this.y > a.y){
+		disx=this.x-a.x;
+		disy=this.y-a.y;
+		 return Math.sqrt((disx*disx)+(disy*disy));
+
+	} else if(this.x > a.x && this.y < a.y){
+		disx=this.x-a.x;
+		disy=a.y-this.y;
+		 return Math.sqrt((disx*disx)+(disy*disy));
+
+	} else if(this.x < a.x && this.y > a.y){
+		disx=a.x-this.x;
+		disy=this.y-a.y;
+		 return Math.sqrt((disx*disx)+(disy*disy));
+ }
+}
+
+try{
+	p.getDistance();
+}catch(e){
+
+}

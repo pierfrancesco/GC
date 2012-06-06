@@ -1,0 +1,51 @@
+//Esercizio 1
+	var p1 =[[0,0],[9,0],[9,3],[8,3],[8,1],[5,1],[5,3],[4,3],[4,1],[1,1],[1,3],[0,3],[0,0]];
+	var p2 = [[0,4],[0,7],[9,7],[9,4],[8,4],[8,6],[5,6],[5,4],[4,4],[4,6],[1,6],[1,4],[0,4]];
+	var pol1 = POLYLINE(p1);
+	var pol2 = POLYLINE(p2);
+	var punti = STRUCT([pol1,pol2])
+	var altezza = EXTRUDE([4])(punti)
+	var muri = STRUCT([COLOR([0,0,1,0.5])(altezza)])
+
+	DRAW(muri);
+
+	//Esercizio 2: Boundary estraea solo il contorno, utile per le trasparenze
+
+	var tetto = CUBOID([9,9,1]);
+	var tettob = BOUNDARY(tetto);
+	var tettocolorato = STRUCT([COLOR([0,0,1,0.5])(tettob)]);
+		DRAW(tettocolorato);
+
+
+ //Esercizio 3 Hermite
+
+var punticontrollo = [[1,0],[1,1],[ 1, 0],[ 1,1]];
+var dominio = INTERVALS(1)(30);
+var mappatura = CUBIC_HERMITE(S0)(punticontrollo);
+var curva = MAP(mappatura)(dominio);
+DRAW(curva);
+
+//Esercizio 4 Bezier...di grado qualunque
+
+var punticontrollo = [[0,0],[1,2],[3,2],[3,0],[5,-1],[6,1]];
+var punticontrollo2 = [[0,0,0],[1,2,1],[3,2,2],[3,0,3],[5,-1,-2],[6,1,-5]]
+var dominio = INTERVALS(1)(30);
+var mappatura = BEZIER(S0)(punticontrollo2);
+var curva = MAP(mappatura)(dominio);
+DRAW(curva);
+
+//Esercizio 5 Spline cardinale. La spline è una curva continua a tratti. è di grado 1.
+//La spline cardinale cubica, ossia una spline interpolatrice, cioè interpola un insieme di punti.
+//La cubic si applica ad un dominio che si applica in un intervallo fra 0 e 1.
+//L'applicazione di cubic cardinal subisce la funzione spline.
+///PEr modificare h, domain,h.
+
+
+var domain = INTERVALS(1)(20);
+var controlpoints = [[0,0],[3,2],[4,-1],[7,3],[9,0],[11,1],[12,0]];
+var splineCardinal = SPLINE(CUBIC_CARDINAL(domain))(controlpoints);
+var splineCardinalh2 = COLOR([1,0,0])(SPLINE(CUBIC_CARDINAL(domain,2))(controlpoints));
+var splineCardinalh4 = COLOR([0,1,0])(SPLINE(CUBIC_CARDINAL(domain,4))(controlpoints));
+var splineCardinalh6 = COLOR([0,0,1])(SPLINE(CUBIC_CARDINAL(domain,0.6))(controlpoints));
+var spline=STRUCT([splineCardinal,splineCardinalh2,splineCardinalh4,splineCardinalh6]);
+DRAW(spline);

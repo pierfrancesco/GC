@@ -7,11 +7,12 @@ function point (x,y){
 
 var random = Math.random;
 
-function puntirandom(n) {
+function puntirandom(n,coefficiente) {
 	var n=n;
 	var contenitore = [];
 	var x;
 	var y;
+	var alfa = coefficiente;
 
 	 for(var i=0; i<n; i++){
 
@@ -19,14 +20,14 @@ function puntirandom(n) {
 	 	y=(random()*200)-100;
 	 	contenitore.push(new point(x,y))
 	 }
-return filtraggio(contenitore);
+return filtraggio(contenitore,alfa);
 }
 
-function filtraggio(array){
+function filtraggio(array,coefficiente){
 	return array
 	.filter(function(item,index,array){
-		return((item.x >= 0 && item.y >=0 &&(item.y/item.x >=1))
+		return((item.x >= 0 && item.y >=0 &&(item.y/item.x >= coefficiente))
 			||(item.x <= 0 && item.y >=0)
-			||(item.x <= 0 && item.y <=0 &&(item.y/item.x <=1)));
+			||(item.x <= 0 && item.y <=0 &&(item.y/item.x <=)));
 	});
 }
